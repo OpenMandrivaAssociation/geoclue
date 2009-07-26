@@ -47,7 +47,7 @@ Developmnet files and headers for %{name}.
 %define _disable_ld_as_needed 1
 %configure2_5x
 
-%make
+%make -j1
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
