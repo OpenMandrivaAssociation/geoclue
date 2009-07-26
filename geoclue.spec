@@ -15,6 +15,7 @@ BuildRequires:	libxml2-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	gpsd-devel
+BuildRequires:	xsltproc
 Requires:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -75,6 +76,7 @@ Developmnet files and headers for %{name}.
 %{_libdir}/%{name}-*
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/geoclue-providers/%{name}-*.provider
+%{_datadir}/gtk-doc/html/%{name}
 
 %files -n %{libname}
 %defattr(-,root,root)
