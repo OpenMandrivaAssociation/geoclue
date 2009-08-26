@@ -5,7 +5,7 @@
 Summary:	The geoinformation service
 Name:		geoclue
 Version:	0.11.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
@@ -36,6 +36,7 @@ Main library for %{name}.
 Summary:	Developmnet libraries for %{name}
 Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
+Provides:	lib%name-devel = %version-%release
 
 %description -n %{develname}
 Developmnet files and headers for %{name}.
