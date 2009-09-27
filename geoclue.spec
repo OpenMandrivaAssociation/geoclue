@@ -1,21 +1,33 @@
 %define major 0
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
+%define snapshot 20090310
+
+%if %{snapshot}
+%define rel %mkrel 0.%{snapshot}.1
+%define src %{name}-%{version}-%{snapshot}.tar.gz
+%else
+%define rel %mkrel 1
+%define src %{name}-%{version}.tar.ge
+%endif
 
 Summary:	The geoinformation service
 Name:		geoclue
-Version:	0.11.1
-Release:	%mkrel 2
+Version:	0.11.1.1
+Release:	%{rel}
 License:	LGPLv2
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
-Source0:	http://folks.o-hand.com/jku/geoclue-releases/%{name}-%{version}.tar.bz2
+Source0:	http://folks.o-hand.com/jku/geoclue-releases/%{src}
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	gpsd-devel
 BuildRequires:	xsltproc
+%if %{snapshot}
+BuildRequires:	gtk-doc
+%endif
 Requires:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -45,17 +57,17 @@ Developmnet files and headers for %{name}.
 %setup -q
 
 %build
-%define _disable_ld_no_undefined 1
-%define _disable_ld_as_needed 1
-%configure2_5x
+./autogen.sh
+%configure2_5x --disable-static --enable-gtk-doc
 
 %make -j1
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
+rm -rf %{buildroot}
 %makeinstall_std
-
+# Install the test gui as it seems the test isn't installed any more
+mkdir $RPM_BUILD_ROOT%{_bindir}
+cp test/.libs/geoclue-test-gui $RPM_BUILD_ROOT%{_bindir}/
 %find_lang %{name}
 
 %if %mdkversion < 200900
