@@ -1,21 +1,21 @@
 %define major 0
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
-%define snapshot 20090310
+%define snapshot 20100119
 
 %if %{snapshot}
-%define rel %mkrel 0.%{snapshot}.2
-%define src %{name}-%{version}-%{snapshot}.tar.gz
+%define rel %mkrel 0.%{snapshot}.1
+%define src %{name}-%{snapshot}.tar.xz
 %else
 %define rel %mkrel 1
-%define src %{name}-%{version}.tar.ge
+%define src %{name}-%{version}.tar.gz
 %endif
 
 Summary:	The geoinformation service
 Name:		geoclue
 Version:	0.11.1.1
 Release:	%{rel}
-License:	LGPLv2
+License:	LGPLv2+
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
 Source0:	http://folks.o-hand.com/jku/geoclue-releases/%{src}
@@ -55,20 +55,21 @@ Provides:	lib%name-devel = %version-%release
 Developmnet files and headers for %{name}.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1 -b .api
 
 %build
 ./autogen.sh
 %configure2_5x --disable-static --enable-gtk-doc
-%make -j1
+%make
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+
 # Install the test gui as it seems the test isn't installed any more
-mkdir $RPM_BUILD_ROOT%{_bindir}
-cp test/.libs/geoclue-test-gui $RPM_BUILD_ROOT%{_bindir}/
+mkdir %{buildroot}%{_bindir}
+cp test/.libs/geoclue-test-gui %{buildroot}%{_bindir}/
 %find_lang %{name}
 
 %if %mdkversion < 200900
