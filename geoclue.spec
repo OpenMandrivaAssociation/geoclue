@@ -4,7 +4,7 @@
 %define snapshot 20100119
 
 %if %{snapshot}
-%define rel %mkrel 0.%{snapshot}.1
+%define rel %mkrel 0.%{snapshot}.2
 %define src %{name}-%{snapshot}.tar.xz
 %else
 %define rel %mkrel 1
@@ -20,6 +20,7 @@ Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
 Source0:	http://folks.o-hand.com/jku/geoclue-releases/%{src}
 Patch0:		geoclue-0.11.1.1-hostip-api.patch
+Patch1:		geoclue-gpsd-2.91.patch
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libGConf2-devel
@@ -57,6 +58,7 @@ Developmnet files and headers for %{name}.
 %prep
 %setup -q -n %{name}
 %patch0 -p1 -b .api
+%patch1 -p0 -b .gpsd
 
 %build
 ./autogen.sh
