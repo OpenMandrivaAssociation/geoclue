@@ -27,9 +27,7 @@ BuildRequires:	libGConf2-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	gpsd-devel >= 2.91
 BuildRequires:	xsltproc
-%if %{snapshot}
 BuildRequires:	gtk-doc
-%endif
 Requires:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
