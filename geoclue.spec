@@ -4,10 +4,10 @@
 %define snapshot 0
 
 %if %{snapshot}
-%define rel %mkrel 0.%{snapshot}.3
+%define rel %mkrel 0.%{snapshot}.4
 %define src %{name}-%{snapshot}.tar.xz
 %else
-%define rel %mkrel 2
+%define rel %mkrel 3
 %define src %{name}-%{version}.tar.gz
 %endif
 
