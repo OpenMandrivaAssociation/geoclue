@@ -10,13 +10,14 @@ License:	LGPLv2+
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
 Source0:	http://folks.o-hand.com/jku/geoclue-releases/%{name}-%{version}.tar.gz
+Patch0:		geoclue-0.12.0-gcc46.patch
+Patch1:		geoclue-0.12.0-str-fmt.patch
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libGConf2-devel GConf2
 BuildRequires:	gtk+2-devel
 BuildRequires:	gpsd-devel >= 2.91
 BuildRequires:	xsltproc
-BuildRequires:	gtk-doc
 Requires:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -44,9 +45,12 @@ Developmnet files and headers for %{name}.
 
 %prep
 %setup -q
+%patch0 -p0
+%patch1 -p0
 
 %build
-%configure2_5x --disable-static --enable-gtk-doc
+autoreconf -fi
+%configure2_5x --disable-static --disable-gtk-doc
 %make
 
 %install
