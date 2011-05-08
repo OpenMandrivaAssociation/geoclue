@@ -1,29 +1,18 @@
 %define major 0
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
-%define snapshot 0
-
-%if %{snapshot}
-%define rel %mkrel 0.%{snapshot}.4
-%define src %{name}-%{snapshot}.tar.xz
-%else
-%define rel %mkrel 3
-%define src %{name}-%{version}.tar.gz
-%endif
 
 Summary:	The geoinformation service
 Name:		geoclue
 Version:	0.12.0
-Release:	%{rel}
+Release:	4
 License:	LGPLv2+
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
-Source0:	http://folks.o-hand.com/jku/geoclue-releases/%{src}
-#Patch0:		geoclue-0.11.1.1-hostip-api.patch
-#Patch1:		geoclue-gpsd-2.91.patch
+Source0:	http://folks.o-hand.com/jku/geoclue-releases/%{name}-%{version}.tar.gz
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libxml2-devel
-BuildRequires:	libGConf2-devel
+BuildRequires:	libGConf2-devel GConf2
 BuildRequires:	gtk+2-devel
 BuildRequires:	gpsd-devel >= 2.91
 BuildRequires:	xsltproc
@@ -55,13 +44,8 @@ Developmnet files and headers for %{name}.
 
 %prep
 %setup -q
-#%patch0 -p1 -b .api
-#%patch1 -p0 -b .gpsd
 
 %build
-%if %{snapshot}
-./autogen.sh
-%endif
 %configure2_5x --disable-static --enable-gtk-doc
 %make
 
