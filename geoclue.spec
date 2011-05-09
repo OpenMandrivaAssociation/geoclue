@@ -17,6 +17,7 @@ BuildRequires:	gpsd-devel >= 2.91
 BuildRequires:	xsltproc
 BuildRequires:	gtk-doc
 BuildRequires:	NetworkManager-devel NetworkManager-glib-devel
+BuildRequires:	gypsy-devel
 
 %description
 Geoclue is a modular geoinformation service built on top of the D-Bus
