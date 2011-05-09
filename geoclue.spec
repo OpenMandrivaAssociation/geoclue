@@ -49,7 +49,14 @@ Developmnet files and headers for %{name}.
 
 %build
 autoreconf -fi
-%configure2_5x --disable-static --disable-gtk-doc
+%configure2_5x	--disable-static \
+		--disable-gtk-doc \
+		--enable-gtk=yes \
+		--enable-conic=yes \
+		--enable-networkmanager=yes \
+		--enable-gypsy=yes \
+		--enable-gpsd=yes \
+		--enable-skyhook=yes
 %make
 
 %install
