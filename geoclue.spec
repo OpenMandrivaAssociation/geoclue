@@ -8,6 +8,7 @@ Url:		http://www.freedesktop.org/wiki/Software/GeoClue
 Source0:	http://folks.o-hand.com/jku/geoclue-releases/%{name}-%{version}.tar.gz
 Patch0:		geoclue-0.12.0-gcc46.patch
 Patch1:		geoclue-0.12.0-str-fmt.patch
+Patch2:		geoclue-0.12.0-networkmanager-pkgconfig-typo.patch
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libGConf2-devel GConf2
@@ -15,6 +16,7 @@ BuildRequires:	gtk+2-devel
 BuildRequires:	gpsd-devel >= 2.91
 BuildRequires:	xsltproc
 BuildRequires:	gtk-doc
+BuildRequires:	NetworkManager-devel NetworkManager-glib-devel
 
 %description
 Geoclue is a modular geoinformation service built on top of the D-Bus
@@ -30,27 +32,28 @@ Group:		System/Libraries
 %description -n %{libname}
 Main library for %{name}.
 
-%define	devname	mklibname -d %{name}
-%package -n	%{develname}
+%define	devname	%mklibname -d %{name}
+%package -n	%{devname}
 Summary:	Developmnet libraries for %{name}
 Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
-Provides:	lib%name-devel = %version-%release
+Provides:	%name-devel = %version-%release
 
-%description -n	%{develname}
+%description -n	%{devname}
 Developmnet files and headers for %{name}.
 
 %prep
 %setup -q
 %patch0 -p0 -b .gcc46~
 %patch1 -p0 -b .str_fmt~
+%patch2 -p1 -b .nm_pkgconf~
 autoreconf -fi
 
 %build
 %configure2_5x	--disable-static \
 		--disable-gtk-doc \
 		--enable-gtk=yes \
-		--enable-conic=yes \
+		--enable-conic=no \
 		--enable-networkmanager=yes \
 		--enable-gypsy=yes \
 		--enable-gpsd=yes \
@@ -77,7 +80,7 @@ cp test/.libs/geoclue-test-gui %{buildroot}%{_bindir}/
 %files -n %{libname}
 %{_libdir}/*%{name}.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %{_includedir}/%{name}
 %{_libdir}/*%{name}.*a
 %{_libdir}/*%{name}.so
