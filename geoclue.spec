@@ -35,13 +35,13 @@ Main library for %{name}.
 
 %define	devname	%mklibname -d %{name}
 %package -n	%{devname}
-Summary:	Developmnet libraries for %{name}
+Summary:	Development libraries for %{name}
 Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n	%{devname}
-Developmnet files and headers for %{name}.
+Development files and headers for %{name}.
 
 %prep
 %setup -q
