@@ -5,7 +5,7 @@
 Summary:	The geoinformation service
 Name:		geoclue
 Version:	0.12.0
-Release:	4
+Release:	5
 License:	LGPLv2+
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
@@ -19,7 +19,6 @@ BuildRequires:	gtk+2-devel
 BuildRequires:	gpsd-devel >= 2.91
 BuildRequires:	xsltproc
 BuildRequires:	gtk-doc
-Requires:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -30,7 +29,6 @@ location-aware applications as simple as possible.
 %package -n %{libname}
 Summary:	Shared library for %{name}
 Group:		System/Libraries
-Requires:	%{name} = %{version}-%{release}
 
 %description -n %{libname}
 Main library for %{name}.
