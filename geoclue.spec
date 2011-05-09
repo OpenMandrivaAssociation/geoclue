@@ -37,7 +37,7 @@ Main library for %{name}.
 Summary:	Developmnet libraries for %{name}
 Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
-Provides:	%name-devel = %version-%release
+Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n	%{devname}
 Developmnet files and headers for %{name}.
@@ -64,8 +64,7 @@ autoreconf -fi
 %makeinstall_std
 
 # Install the test gui as it seems the test isn't installed any more
-mkdir %{buildroot}%{_bindir}
-cp test/.libs/geoclue-test-gui %{buildroot}%{_bindir}/
+install -m755 test/.libs/geoclue-test-gui -D %{buildroot}%{_bindir}/geoclue-test-gui
 %find_lang %{name}
 
 %files -f %{name}.lang
@@ -78,10 +77,10 @@ cp test/.libs/geoclue-test-gui %{buildroot}%{_bindir}/
 %{_datadir}/gtk-doc/html/%{name}
 
 %files -n %{libname}
-%{_libdir}/*%{name}.so.%{major}*
+%{_libdir}/lib%{name}.so.%{major}*
 
 %files -n %{devname}
 %{_includedir}/%{name}
-%{_libdir}/*%{name}.*a
-%{_libdir}/*%{name}.so
+%{_libdir}/lib%{name}.*a
+%{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
