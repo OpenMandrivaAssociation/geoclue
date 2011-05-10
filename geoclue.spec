@@ -58,7 +58,7 @@ autoreconf -fi
 		--enable-networkmanager=yes \
 		--enable-gypsy=yes \
 		--enable-gpsd=yes \
-		--enable-skyhook=yes
+		--enable-skyhook=no
 %make
 
 %install
