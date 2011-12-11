@@ -68,12 +68,11 @@ autoreconf -fi
 %install
 %makeinstall_std
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
-%find_lang %{name}
 
 # Install the test gui as it seems the test isn't installed any more
 install -m755 test/.libs/geoclue-test-gui -D %{buildroot}%{_bindir}/geoclue-test-gui
 
-%files -f %{name}.lang
+%files 
 %doc AUTHORS README
 %dir %{_datadir}/geoclue-providers
 %{_bindir}/%{name}*
