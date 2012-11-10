@@ -1,0 +1,10 @@
+--- configure.ac.gcc	2011-05-08 09:02:34.000000000 +0200
++++ configure.ac	2011-05-08 09:02:41.000000000 +0200
+@@ -53,7 +53,6 @@
+ AC_SUBST(DBUS_SERVICES_DIR)
+ AC_DEFINE_UNQUOTED(DBUS_SERVICES_DIR, "$DBUS_SERVICES_DIR", [Where services dir for D-Bus is])
+ 
+-CFLAGS="$CFLAGS -g -Wall -Werror -Wno-format"
+ 
+ # -----------------------------------------------------------
+ # gtk+

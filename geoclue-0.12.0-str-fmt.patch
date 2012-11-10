@@ -1,0 +1,18 @@
+--- geoclue/gc-web-service.c.str	2011-05-08 09:05:13.000000000 +0200
++++ geoclue/gc-web-service.c	2011-05-08 09:06:06.000000000 +0200
+@@ -192,6 +192,7 @@
+ 	if (!ctxt) {
+ 		*error = g_error_new (GEOCLUE_ERROR, 
+ 		                      GEOCLUE_ERROR_NOT_AVAILABLE,
++				      "%s",
+ 		                      g_strdup_printf ("xmlNanoHTTPMethod did not get a response from %s\n", url));
+ 		return FALSE;
+ 	}
+@@ -204,6 +205,7 @@
+ 			
+ 			*error = g_error_new (GEOCLUE_ERROR, 
+ 			                      GEOCLUE_ERROR_FAILED,
++					      "%s",
+ 			                      g_strdup_printf ("libxml error (xmlBufferAdd failed)"));
+ 			
+ 			return FALSE;
