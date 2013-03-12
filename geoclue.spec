@@ -53,6 +53,7 @@ Development files and headers for %{name}.
 %patch2 -p1 -b .nm_pkgconf~
 
 %build
+sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.ac
 autoreconf -fi
 %configure2_5x	\
 	--disable-static \
