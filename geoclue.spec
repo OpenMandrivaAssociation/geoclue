@@ -1,6 +1,6 @@
 Name:          geoclue
 Version:       0.12.99
-Release:       5
+Release:       6
 Summary:       A modular geoinformation service
 Group:         Networking/Other
 License:       LGPLv2
