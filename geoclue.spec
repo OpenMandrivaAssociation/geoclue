@@ -5,7 +5,7 @@ Summary:		A modular geoinformation service
 Group:			Networking/Other
 License:		LGPLv2
 URL:			http://geoclue.freedesktop.org/
-Source0:		http://freedesktop.org/~hadess/%{name}-%{version}.tar.gz
+Source0:		http://freedesktop.org/~hadess/%{name}-%{version}.tar.xz
 BuildRequires:	pkgconfig(dbus-glib-1) >= 0.86
 BuildRequires:	pkgconfig(gio-2.0) >= 2.25.7
 BuildRequires:	pkgconfig(glib-2.0)
