@@ -1,25 +1,24 @@
-Name:          geoclue
-Version:       0.12.99
-Release:       7
-Summary:       A modular geoinformation service
-Group:         Networking/Other
-License:       LGPLv2
-URL:           http://geoclue.freedesktop.org/
-Source0:       http://freedesktop.org/~hadess/%{name}-%{version}.tar.gz
-Patch0:        geoclue-0.12.0-gps.patch
-BuildRequires: pkgconfig(dbus-glib-1) >= 0.86
-BuildRequires: pkgconfig(gio-2.0) >= 2.25.7
-BuildRequires: pkgconfig(glib-2.0)
-BuildRequires: pkgconfig(gobject-2.0)
-BuildRequires: pkgconfig(gtk+-2.0)
-BuildRequires: pkgconfig(gypsy) >= 0.7.1
-BuildRequires: pkgconfig(libgps) >= 2.91
-BuildRequires: pkgconfig(libnm-glib)
-BuildRequires: pkgconfig(libnm-util)
-BuildRequires: pkgconfig(libsoup-gnome-2.4)
-BuildRequires: pkgconfig(libxml-2.0)
-Buildrequires: xsltproc
-Requires: dbus
+Name:			geoclue
+Version:		2.1.1
+Release:		1
+Summary:		A modular geoinformation service
+Group:			Networking/Other
+License:		LGPLv2
+URL:			http://geoclue.freedesktop.org/
+Source0:		http://freedesktop.org/~hadess/%{name}-%{version}.tar.gz
+BuildRequires:	pkgconfig(dbus-glib-1) >= 0.86
+BuildRequires:	pkgconfig(gio-2.0) >= 2.25.7
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gobject-2.0)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gypsy) >= 0.7.1
+BuildRequires:	pkgconfig(libgps) >= 2.91
+BuildRequires:	pkgconfig(libnm-glib)
+BuildRequires:	pkgconfig(libnm-util)
+BuildRequires:	pkgconfig(libsoup-gnome-2.4)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	xsltproc
+Requires:	dbus
 
 %description
 Geoclue is a modular geoinformation service built on top of the D-Bus 
@@ -185,5 +184,5 @@ A gsmloc provider for geoclue
 find %{buildroot} -name '*.la' -delete
 
 # Install the test gui as it seems the test isn't installed any more
-mkdir $RPM_BUILD_ROOT%{_bindir}
-cp test/.libs/geoclue-test-gui $RPM_BUILD_ROOT%{_bindir}/
+mkdir %{buildroot}%{_bindir}
+cp test/.libs/geoclue-test-gui %{buildroot}%{_bindir}/
