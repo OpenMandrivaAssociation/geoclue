@@ -5,7 +5,7 @@
 Summary:	The geoinformation service
 Name:		geoclue
 Version:	0.12.0
-Release:	8
+Release:	9
 License:	LGPLv2+
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
