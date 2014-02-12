@@ -74,7 +74,7 @@ install -m755 test/.libs/geoclue-test-gui -D %{buildroot}%{_bindir}/geoclue-test
 %doc AUTHORS README
 %dir %{_datadir}/geoclue-providers
 %{_bindir}/%{name}*
-%{_libdir}/%{name}-*
+%{_libexecdir}/%{name}-*
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/geoclue-providers/%{name}-*.provider
 %{_datadir}/gtk-doc/html/%{name}
