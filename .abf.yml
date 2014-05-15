@@ -1,5 +1,3 @@
-removed_sources:
-  geoclue-0.12.0.tar.gz: 0c7d3322ac80e5032b8dd5826ad76517f34c92fd
-  geoclue-0.12.99.tar.gz: 32958b36e679c9fb9b35b25d29c43d5ae6a0be27
+
 sources:
-  geoclue-2.1.1.tar.xz: c96e293ad1b074a401fa3633b8e177f95319846d
+  geoclue-2.1.8.tar.xz: 7668085749d80552e9a92d65786516b45b98943f
