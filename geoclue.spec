@@ -1,5 +1,5 @@
 Name:			geoclue
-Version:		2.1.1
+Version:		2.1.8
 Release:		1
 Summary:		A modular geoinformation service
 Group:			Networking/Other
