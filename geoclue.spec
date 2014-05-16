@@ -18,6 +18,7 @@ BuildRequires:	pkgconfig(libnm-util)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(json-glib-1.0)
+BuildRequires:	pkgconfig(mm-glib)
 BuildRequires:	xsltproc
 BuildRequires:	intltool
 Requires:	dbus
