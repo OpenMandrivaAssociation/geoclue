@@ -115,16 +115,16 @@ Developer documentation for geoclue
 
 #--------------------------------------------------------------------
 
-%package gui
-Summary: Testing gui for geoclue
-Group: Networking/Other
-Requires: %{name} = %{version}-%{release}
+#%package gui
+#Summary: Testing gui for geoclue
+#Group: Networking/Other
+#Requires: %{name} = %{version}-%{release}
 
-%description gui
-Testing gui for geoclue
+#%description gui
+#Testing gui for geoclue
 
-%files gui
-%{_bindir}/geoclue-test-gui
+#%files gui
+#%{_bindir}/geoclue-test-gui
 
 #--------------------------------------------------------------------
 
@@ -176,7 +176,7 @@ A gsmloc provider for geoclue
 
 %prep
 %setup -q
-%patch0 -p1
+%apply_patches
 
 %build
 %configure2_5x --disable-static
@@ -189,5 +189,5 @@ A gsmloc provider for geoclue
 find %{buildroot} -name '*.la' -delete
 
 # Install the test gui as it seems the test isn't installed any more
-mkdir %{buildroot}%{_bindir}
-cp test/.libs/geoclue-test-gui %{buildroot}%{_bindir}/
+#mkdir %{buildroot}%{_bindir}
+#cp test/.libs/geoclue-test-gui %{buildroot}%{_bindir}/
