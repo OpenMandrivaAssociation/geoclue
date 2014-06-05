@@ -6,6 +6,7 @@ Group:			Networking/Other
 License:		LGPLv2
 URL:			http://geoclue.freedesktop.org/
 Source0:		http://freedesktop.org/~hadess/%{name}-%{version}.tar.xz
+
 BuildRequires:	pkgconfig(dbus-glib-1) >= 0.86
 BuildRequires:	pkgconfig(gio-2.0) >= 2.25.7
 BuildRequires:	pkgconfig(glib-2.0)
@@ -14,6 +15,7 @@ BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(gypsy) >= 0.7.1
 BuildRequires:	pkgconfig(libgps) >= 2.91
 BuildRequires:	pkgconfig(libnm-glib)
+BuildRequires:	pkgconfig(libnm-glib-vpn)
 BuildRequires:	pkgconfig(libnm-util)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(libxml-2.0)
