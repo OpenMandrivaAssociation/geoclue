@@ -1,4 +1,4 @@
-%define build_geoip	1
+%define build_geoip	0
 
 %define url_ver %(echo %{version} | cut -d. -f1,2)
 
