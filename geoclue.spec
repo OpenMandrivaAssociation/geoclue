@@ -6,7 +6,7 @@
 
 Name:			geoclue
 Version:		2.1.8
-Release:		2
+Release:		3
 Summary:		A modular geoinformation service
 Group:			Networking/Other
 License:		GPLv2+
