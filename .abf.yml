@@ -1,3 +1,4 @@
-
-sources:
+removed_sources:
   geoclue-2.1.8.tar.xz: 7668085749d80552e9a92d65786516b45b98943f
+sources:
+  geoclue-2.1.10.tar.xz: 84cde181d17d58a52f6ac2d218b59c106f675fb0
