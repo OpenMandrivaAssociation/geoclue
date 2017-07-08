@@ -5,8 +5,8 @@
 %define api 2.0
 
 Name:			geoclue
-Version:		2.2.0
-Release:		2
+Version:		2.4.7
+Release:		1
 Summary:		A modular geoinformation service
 Group:			Networking/Other
 License:		GPLv2+
@@ -35,6 +35,8 @@ Requires:	geoip-database >= 1.5.1
 Conflicts:	geocode-glib < 0.99.2
 %endif
 
+%libpackage geoclue-2 0
+
 %description
 Geoclue is a D-Bus service that provides location information. The
 primary goal of the Geoclue project is to make creating location-aware
@@ -57,8 +59,7 @@ any permission control.
 %dir %{_sysconfdir}/%{name}/
 %{_sysconfdir}/%{name}/%{name}.conf
 %{_datadir}/dbus-1/system-services/org.freedesktop.GeoClue2.service
-%{_datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2.Agent.xml
-%{_datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2.xml
+%{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/applications/geoclue-demo-agent.desktop
 %{_datadir}/applications/geoclue-where-am-i.desktop
 %{_libexecdir}/geoclue-2.0/
@@ -74,17 +75,22 @@ any permission control.
 %package devel
 Summary:	Development files for geoclue2
 Group:		Development/Other
-BuildArch:	noarch
 Obsoletes:	libgeoclue1.0-devel < 1.99.2
 Obsoletes:	lib64geoclue1.0-devel < 1.99.2
 # (tv) fix "No rule to make target '/usr/share/dbus-1/interfaces/org.freedesktop.GeoClue2.xml', needed by 'geoclue.h'":
 Requires: geoclue
+Requires: %mklibname geoclue-2 0
 
 %description devel
 This package contains the development files for geoclue2.
 
 %files devel
+%{_includedir}/libgeoclue-%{api}
 %{_libdir}/pkgconfig/%{name}-%{api}.pc
+%{_libdir}/pkgconfig/lib%{name}-%{api}.pc
+%{_libdir}/girepository-1.0/Geoclue-2.0.typelib
+%{_datadir}/gir-1.0/Geoclue-2.0.gir
+%{_libdir}/*.so
 
 #--------------------------------------------------------------------
 %prep
