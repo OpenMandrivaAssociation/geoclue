@@ -5,7 +5,7 @@
 %define api 2.0
 
 Name:			geoclue
-Version:		2.4.7
+Version:		2.4.10
 Release:		1
 Summary:		A modular geoinformation service
 Group:			Networking/Other
@@ -22,7 +22,7 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(json-glib-1.0)
 BuildRequires:	pkgconfig(libpng16)
 BuildRequires:	pkgconfig(libsoup-2.4)
-BuildRequires:	pkgconfig(mm-glib)
+BuildRequires:	pkgconfig(mm-glib) >= 1.6
 BuildRequires:	pkgconfig(libnm-glib) >= 0.9.8.0
 BuildRequires:	pkgconfig(libnm-glib-vpn)
 BuildRequires:	pkgconfig(avahi-client)
@@ -65,6 +65,7 @@ any permission control.
 %{_sysconfdir}/%{name}/%{name}.conf
 %{_datadir}/dbus-1/system-services/org.freedesktop.GeoClue2.service
 %{_datadir}/dbus-1/interfaces/*.xml
+%{_sysconfdir}/xdg/autostart/geoclue-demo-agent.desktop
 %{_datadir}/applications/geoclue-demo-agent.desktop
 %{_datadir}/applications/geoclue-where-am-i.desktop
 %{_libexecdir}/geoclue-2.0/
