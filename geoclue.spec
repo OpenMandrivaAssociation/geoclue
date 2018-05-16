@@ -31,6 +31,8 @@ BuildRequires:	avahi-common-devel
 BuildRequires:	gtk-doc
 BuildRequires:	gobject-introspection
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
+# _unitdir
+BuildRequires:	systemd
 
 # for demo agent
 BuildRequires:	pkgconfig(libnotify)
