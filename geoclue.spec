@@ -27,6 +27,7 @@ BuildRequires:	pkgconfig(libnm-glib) >= 0.9.8.0
 BuildRequires:	pkgconfig(libnm-glib-vpn)
 BuildRequires:	pkgconfig(avahi-client)
 BuildRequires:	pkgconfig(avahi-glib)
+BuildRequires:	avahi-common-devel
 BuildRequires:	gtk-doc
 BuildRequires:	gobject-introspection
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
