@@ -35,7 +35,7 @@ BuildRequires:	xmlto docbook-dtds
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	meson
 # _unitdir
-BuildRequires:	systemd
+BuildRequires:	systemd-macros pkgconfig(systemd)
 
 # for demo agent
 BuildRequires:	pkgconfig(libnotify)
