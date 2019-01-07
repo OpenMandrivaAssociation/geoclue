@@ -5,13 +5,13 @@
 %define api 2.0
 
 Name:			geoclue
-Version:		2.4.12
-Release:		2
+Version:		2.5.2
+Release:		1
 Summary:		A modular geoinformation service
 Group:			Networking/Other
 License:		GPLv2+
-URL:			http://geoclue.freedesktop.org/
-Source0:		http://www.freedesktop.org/software/geoclue/releases/%{url_ver}/geoclue-%{version}.tar.xz
+URL:			https://gitlab.freedesktop.org/geoclue/geoclue/wikis/home
+Source0:		https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/%{version}/geoclue-%{version}.tar.bz2
 
 BuildRequires:	intltool
 BuildRequires:	itstool
@@ -27,10 +27,12 @@ BuildRequires:	pkgconfig(libnm-glib) >= 0.9.8.0
 BuildRequires:	pkgconfig(libnm-glib-vpn)
 BuildRequires:	pkgconfig(avahi-client)
 BuildRequires:	pkgconfig(avahi-glib)
+BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	avahi-common-devel
 BuildRequires:	gtk-doc
 BuildRequires:	gobject-introspection
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
+BuildRequires:	meson
 # _unitdir
 BuildRequires:	systemd
 
@@ -81,6 +83,19 @@ any permission control.
 
 #--------------------------------------------------------------------
 
+%package vala
+Summary:	Vala integration for geoclue
+Group:		Development/Other
+Requires:	geoclue = %{EVRD}
+
+%description vala
+Vala integration for geoclue
+
+%files vala
+%{_datadir}/vala/vapi/*
+
+#--------------------------------------------------------------------
+
 %package devel
 Summary:	Development files for geoclue2
 Group:		Development/Other
@@ -94,6 +109,7 @@ Requires: %mklibname geoclue-2 0
 This package contains the development files for geoclue2.
 
 %files devel
+%doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/libgeoclue-%{api}
 %{_libdir}/pkgconfig/%{name}-%{api}.pc
 %{_libdir}/pkgconfig/lib%{name}-%{api}.pc
@@ -105,19 +121,19 @@ This package contains the development files for geoclue2.
 %prep
 %setup -q
 %apply_patches
+%meson \
+	-Dlibgeoclue=true \
+	-Dintrospection=true \
+	-Dgtk-doc=true \
+	-D3g-source=true \
+	-Dcdma-source=true \
+	-Dmodem-gps-source=true \
+	-Dnmea-source=true \
+	-Denable-backend=true \
+	-Ddemo-agent=true
 
 %build
-#autoreconf -vfi
-%configure \
-	--enable-demo-agent \
-%if %{build_geoip}
-        --enable-geoip-server=yes \
-%else
-	--enable-geoip-server=no \
-%endif
-	--disable-static \
-	--with-systemdsystemunitdir=%{_unitdir}
-%make
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
