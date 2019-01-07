@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	avahi-common-devel
 BuildRequires:	gtk-doc
 BuildRequires:	gobject-introspection
+BuildRequires:	xmlto docbook-dtds
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	meson
 # _unitdir
