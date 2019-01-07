@@ -88,6 +88,7 @@ any permission control.
 Summary:	Vala integration for geoclue
 Group:		Development/Other
 Requires:	geoclue = %{EVRD}
+BuildRequires:	vala
 
 %description vala
 Vala integration for geoclue
