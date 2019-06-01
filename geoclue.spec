@@ -5,7 +5,7 @@
 %define api 2.0
 
 Name:			geoclue
-Version:		2.5.2
+Version:		2.5.3
 Release:		1
 Summary:		A modular geoinformation service
 Group:			Networking/Other
@@ -39,6 +39,8 @@ BuildRequires:	systemd-macros pkgconfig(systemd)
 
 # for demo agent
 BuildRequires:	pkgconfig(libnotify)
+# for TLS/SSL support
+Requires:	glib-networking
 
 %if %{build_geoip}
 BuildRequires:	pkgconfig(geoip) >= 1.5.1
@@ -97,7 +99,17 @@ Vala integration for geoclue
 %{_datadir}/vala/vapi/*
 
 #--------------------------------------------------------------------
+%package gir
+Summary:	GObject Introspection interface description for geoclue2
+Group:		System/Libraries
 
+%description gir
+GObject Introspection interface description for geoclue2.
+
+%files gir
+%{_libdir}/girepository-1.0/Geoclue-2.0.typelib
+
+#--------------------------------------------------------------------
 %package devel
 Summary:	Development files for geoclue2
 Group:		Development/Other
@@ -115,7 +127,6 @@ This package contains the development files for geoclue2.
 %{_includedir}/libgeoclue-%{api}
 %{_libdir}/pkgconfig/%{name}-%{api}.pc
 %{_libdir}/pkgconfig/lib%{name}-%{api}.pc
-%{_libdir}/girepository-1.0/Geoclue-2.0.typelib
 %{_datadir}/gir-1.0/Geoclue-2.0.gir
 %{_libdir}/*.so
 
