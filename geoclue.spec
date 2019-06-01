@@ -66,7 +66,7 @@ location based on your IP (i-e city-level accuracy) and does not have
 any permission control.
 
 %files
-%doc NEWS README
+%doc NEWS README.md
 %{_sysconfdir}/dbus-1/system.d/org.freedesktop.GeoClue2.conf
 %{_sysconfdir}/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
 %dir %{_sysconfdir}/%{name}/
