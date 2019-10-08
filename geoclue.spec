@@ -5,13 +5,13 @@
 %define api 2.0
 
 Name:			geoclue
-Version:		2.5.3
-Release:		1
+Version:	2.5.5
+Release:	1
 Summary:		A modular geoinformation service
 Group:			Networking/Other
 License:		GPLv2+
 URL:			https://gitlab.freedesktop.org/geoclue/geoclue/wikis/home
-Source0:		https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/%{version}/geoclue-%{version}.tar.bz2
+Source0:	https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/%{version}/%{name}-%{version}.tar.bz2
 
 BuildRequires:	intltool
 BuildRequires:	itstool
@@ -23,8 +23,6 @@ BuildRequires:	pkgconfig(json-glib-1.0)
 BuildRequires:	pkgconfig(libpng16)
 BuildRequires:	pkgconfig(libsoup-2.4)
 BuildRequires:	pkgconfig(mm-glib) >= 1.6
-BuildRequires:	pkgconfig(libnm-glib) >= 0.9.8.0
-BuildRequires:	pkgconfig(libnm-glib-vpn)
 BuildRequires:	pkgconfig(avahi-client)
 BuildRequires:	pkgconfig(avahi-glib)
 BuildRequires:	pkgconfig(ModemManager)
