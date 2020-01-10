@@ -132,7 +132,7 @@ This package contains the development files for geoclue2.
 #--------------------------------------------------------------------
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 %meson \
 	-Dlibgeoclue=true \
 	-Dintrospection=true \
