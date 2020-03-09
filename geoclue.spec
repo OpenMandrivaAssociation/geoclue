@@ -127,7 +127,7 @@ This package contains the development files for geoclue2.
 %{_libdir}/pkgconfig/lib%{name}-%{api}.pc
 %{_datadir}/gir-1.0/Geoclue-2.0.gir
 %{_libdir}/*.so
-%{_mandir}/man5/geoclue.5.xz
+%{_mandir}/man5/geoclue.5.*
 
 #--------------------------------------------------------------------
 %prep
