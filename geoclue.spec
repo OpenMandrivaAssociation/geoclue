@@ -5,7 +5,7 @@
 %define api 2.0
 
 Name:			geoclue
-Version:	2.5.5
+Version:	2.5.6
 Release:	1
 Summary:		A modular geoinformation service
 Group:			Networking/Other
