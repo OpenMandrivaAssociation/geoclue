@@ -1,19 +1,20 @@
+%define major 0
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
 %define build_geoip	0
-
 %define url_ver %(echo %{version} | cut -d. -f1,2)
-
 %define api 2.0
 
-Name:			geoclue
-Version:	2.5.6
-Release:	2
-Summary:		A modular geoinformation service
-Group:			Networking/Other
-License:		GPLv2+
-URL:			https://gitlab.freedesktop.org/geoclue/geoclue/wikis/home
+
+Summary:	The geoinformation service
+Name:		geoclue
+Version:	2.5.7
+Release:	1
+License:	LGPLv2+
+Group:		Networking/Other
+Url:		http://www.freedesktop.org/wiki/Software/GeoClue
 Source0:	https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/%{version}/%{name}-%{version}.tar.bz2
 
-BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	libxml2-utils
 BuildRequires:	pkgconfig(gio-2.0)
@@ -32,13 +33,9 @@ BuildRequires:	gobject-introspection
 BuildRequires:	xmlto docbook-dtds
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	meson
-# _unitdir
-BuildRequires:	systemd-macros pkgconfig(systemd)
-
+BuildRequires:	pkgconfig(systemd)
 # for demo agent
 BuildRequires:	pkgconfig(libnotify)
-# for TLS/SSL support
-Requires:	glib-networking
 
 %if %{build_geoip}
 BuildRequires:	pkgconfig(geoip) >= 1.5.1
@@ -46,22 +43,10 @@ Requires:	geoip-database >= 1.5.1
 Conflicts:	geocode-glib < 0.99.2
 %endif
 
-%libpackage geoclue-2 0
-
 %description
-Geoclue is a D-Bus service that provides location information. The
-primary goal of the Geoclue project is to make creating location-aware
-applications as simple as possible, while the secondary goal is to
-ensure that no application can access location information without
-explicit permission from user.
-
-Geoclue used to also do (reverse-)geocoding but that functionality has
-been dropped in favor of geocode-glib library.
-
-However project is in the early stages of development and hence
-lacking essential features. Currently it can only determine your
-location based on your IP (i-e city-level accuracy) and does not have
-any permission control.
+Geoclue is a modular geoinformation service built on top of the D-Bus
+messaging system.The goal of the Geoclue project is to make creating
+location-aware applications as simple as possible.
 
 %files
 %doc NEWS README.md
@@ -82,6 +67,19 @@ any permission control.
 %{_bindir}/geoip-lookup
 %endif
 
+#----------------------------------------------------------------------------
+
+%package -n	%{libname}
+Summary:	Shared library for %{name}
+Group:		System/Libraries
+
+%description -n %{libname}
+Main library for %{name}.
+
+%files -n %{libname}
+%{_libdir}/lib%{name}-2.so.%{major}*
+
+
 #--------------------------------------------------------------------
 
 %package vala
@@ -96,7 +94,8 @@ Vala integration for geoclue
 %files vala
 %{_datadir}/vala/vapi/*
 
-#--------------------------------------------------------------------
+#----------------------------------------------------------------------------
+
 %package gir
 Summary:	GObject Introspection interface description for geoclue2
 Group:		System/Libraries
@@ -107,20 +106,19 @@ GObject Introspection interface description for geoclue2.
 %files gir
 %{_libdir}/girepository-1.0/Geoclue-2.0.typelib
 
-#--------------------------------------------------------------------
-%package devel
-Summary:	Development files for geoclue2
-Group:		Development/Other
-Obsoletes:	libgeoclue1.0-devel < 1.99.2
-Obsoletes:	lib64geoclue1.0-devel < 1.99.2
-# (tv) fix "No rule to make target '/usr/share/dbus-1/interfaces/org.freedesktop.GeoClue2.xml', needed by 'geoclue.h'":
-Requires: geoclue
-Requires: %mklibname geoclue-2 0
+#----------------------------------------------------------------------------
 
-%description devel
-This package contains the development files for geoclue2.
+%package -n %{devname}
+Summary:	Development libraries for %{name}
+Group:		System/Libraries
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Requires:	%{name} = %{EVRD}
 
-%files devel
+%description -n %{devname}
+Development files and headers for %{name}.
+
+%files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/libgeoclue-%{api}
 %{_libdir}/pkgconfig/%{name}-%{api}.pc
@@ -129,7 +127,8 @@ This package contains the development files for geoclue2.
 %{_libdir}/*.so
 %{_mandir}/man5/geoclue.5.*
 
-#--------------------------------------------------------------------
+#----------------------------------------------------------------------------
+
 %prep
 %setup -q
 %autopatch -p1
@@ -149,3 +148,4 @@ This package contains the development files for geoclue2.
 
 %install
 %meson_install
+
