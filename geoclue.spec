@@ -56,6 +56,7 @@ location-aware applications as simple as possible.
 %{_sysconfdir}/%{name}/%{name}.conf
 %{_datadir}/dbus-1/system-services/org.freedesktop.GeoClue2.service
 %{_datadir}/dbus-1/interfaces/*.xml
+%{_datadir}/polkit-1/rules.d/org.freedesktop.GeoClue2.rules
 %{_sysconfdir}/xdg/autostart/geoclue-demo-agent.desktop
 %{_datadir}/applications/geoclue-demo-agent.desktop
 %{_datadir}/applications/geoclue-where-am-i.desktop
