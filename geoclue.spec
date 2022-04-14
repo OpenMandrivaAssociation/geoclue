@@ -9,7 +9,7 @@
 Summary:	The geoinformation service
 Name:		geoclue
 Version:	2.6.0
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
@@ -43,6 +43,8 @@ Requires:	geoip-database >= 1.5.1
 Conflicts:	geocode-glib < 0.99.2
 %endif
 
+Requires:	%{libname} = %{EVRD}
+
 %description
 Geoclue is a modular geoinformation service built on top of the D-Bus
 messaging system.The goal of the Geoclue project is to make creating
@@ -73,6 +75,8 @@ location-aware applications as simple as possible.
 %package -n	%{libname}
 Summary:	Shared library for %{name}
 Group:		System/Libraries
+
+Obsoletes:	%{libname} < %{EVRD}
 
 %description -n %{libname}
 Main library for %{name}.
@@ -133,6 +137,8 @@ Development files and headers for %{name}.
 %prep
 %setup -q
 %autopatch -p1
+
+%build
 %meson \
 	-Dlibgeoclue=true \
 	-Dintrospection=true \
@@ -144,7 +150,6 @@ Development files and headers for %{name}.
 	-Denable-backend=true \
 	-Ddemo-agent=true
 
-%build
 %meson_build
 
 %install
