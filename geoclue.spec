@@ -9,7 +9,7 @@
 Summary:	The geoinformation service
 Name:		geoclue
 Version:	2.6.0
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		Networking/Other
 Url:		http://www.freedesktop.org/wiki/Software/GeoClue
@@ -133,6 +133,10 @@ Development files and headers for %{name}.
 %prep
 %setup -q
 %autopatch -p1
+
+%build
+export CC=gcc
+export CXX=g++
 %meson \
 	-Dlibgeoclue=true \
 	-Dintrospection=true \
@@ -143,8 +147,7 @@ Development files and headers for %{name}.
 	-Dnmea-source=true \
 	-Denable-backend=true \
 	-Ddemo-agent=true
-
-%build
+	
 %meson_build
 
 %install
