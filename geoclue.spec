@@ -52,8 +52,8 @@ location-aware applications as simple as possible.
 
 %files
 %doc NEWS README.md
-%{_sysconfdir}/dbus-1/system.d/org.freedesktop.GeoClue2.conf
-%{_sysconfdir}/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
+#{_sysconfdir}/dbus-1/system.d/org.freedesktop.GeoClue2.conf
+#{_sysconfdir}/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
 %dir %{_sysconfdir}/%{name}/
 %{_sysconfdir}/%{name}/%{name}.conf
 %{_datadir}/dbus-1/system-services/org.freedesktop.GeoClue2.service
