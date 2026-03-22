@@ -9,14 +9,14 @@
 Summary:	The geoinformation service
 Name:		geoclue
 Version:	2.8.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Networking/Other
 Url:		https://www.freedesktop.org/wiki/Software/GeoClue
 Source0:	https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/%{version}/%{name}-%{version}.tar.bz2
 
 BuildRequires:	itstool
-BuildRequires:	libxml2-utils
+BuildRequires:	libxml2-utils >= 2.15.2
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gio-unix-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
