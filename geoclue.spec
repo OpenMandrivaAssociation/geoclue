@@ -8,7 +8,7 @@
 
 Summary:	The geoinformation service
 Name:		geoclue
-Version:	2.8.1
+Version:	2.8.2
 Release:	1
 License:	LGPLv2+
 Group:		Networking/Other
