@@ -50,7 +50,7 @@ Geoclue is a modular geoinformation service built on top of the D-Bus
 messaging system.The goal of the Geoclue project is to make creating
 location-aware applications as simple as possible.
 
-%files
+%files -f %{name}-2.0.lang
 %doc NEWS README.md
 %{_datadir}/dbus-1/system.d/org.freedesktop.GeoClue2.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
@@ -155,3 +155,4 @@ Development files and headers for %{name}.
 %install
 %meson_install
 
+%find_lang %{name}-2.0
